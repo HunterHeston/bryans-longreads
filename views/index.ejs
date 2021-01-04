@@ -5,14 +5,30 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <% view_data.forEach(element => { %>
-    <li><%= element.date %></li>
-    <% element.links.forEach(link => { %>
-    <li>
-      <p><%= link.description %></p>
-      <p><%= link.link %></p>
-    </li>
+    <div class="bg-white overflow-hidden shadow sm:rounded-lg">
+      <div class="px-4 py-5 sm:p-6">
+        <ul class="divide-y divide-gray-200">
+          <% view_data.forEach(element => { %>
+          <li><%= element.date %></li>
+          <% element.links.forEach(link => { %>
 
-    <% }) %> <% }) %>
+          <li class="py-4 flex">
+            <img
+              class="h-10 w-10 rounded-full"
+              src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
+              alt=""
+            />
+            <div class="ml-3">
+              <p class="text-sm font-medium text-gray-900">
+                <%= link.description %>
+              </p>
+              <p class="text-sm text-gray-500"><%= link.link %></p>
+            </div>
+          </li>
+
+          <% }) %> <% }) %>
+        </ul>
+      </div>
+    </div>
   </body>
 </html>
