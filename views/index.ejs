@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Long Reads</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <% view_data.forEach(element => { %>
+    <li><%= element.date %></li>
+    <% element.links.forEach(link => { %>
+    <li>
+      <p><%= link.description %></p>
+      <p><%= link.link %></p>
+    </li>
+
+    <% }) %> <% }) %>
   </body>
 </html>
