@@ -1,50 +1,51 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Long Reads</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <title>Bryan's Longreads</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- We've used 3xl here, but feel free to try other max-widths based on your needs -->
       <div class="max-w-3xl mx-auto">
+        <div class="px-4 py-5 sm:px-6 t">
+          <!-- Content goes here -->
+          <h1 class="text-3xl">Bryan's Longread Suggestions</h1>
+          <!-- We use less vertical padding on card headers on desktop than on body sections -->
+        </div>
         <div class="bg-white overflow-hidden shadow sm:rounded-lg">
-          <div class="px-4 py-5 sm:px-6">
-            <!-- Content goes here -->
-            this is the header
-            <!-- We use less vertical padding on card headers on desktop than on body sections -->
-          </div>
           <div class="px-4 py-5 sm:p-6">
-            <ul class="divide-y divide-gray-200">
-              <% view_data.forEach(element => { %>
-              <li><%= element.date %></li>
+            <% view_data.forEach(element => { %>
+            <ul class="divide-y divide-gray-200 mb-10">
+              <li class="text-green-600 font-bold text-lg ml-3">
+                <%= element.date %>
+              </li>
               <% element.links.forEach(link => { %>
 
               <li class="py-4 flex">
-                <img
-                  class="h-10 w-10 rounded-full"
-                  src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                  alt=""
-                />
                 <div class="ml-3">
-                  <p class="text-sm font-medium text-gray-900">
+                  <p class="text-sm font-medium text-gray-900 mb-3">
                     <%= link.description %>
                   </p>
                   <a
                     target="_blank"
                     rel="noopener"
                     href="<%= link.link %>"
-                    class="text-sm text-gray-500"
-                    ><%= link.link %></a
+                    class="text-sm text-green-400 flex items-center"
                   >
+                    <%= link.link_short_name %>
+                    <img src="images/out-link.png" class="w-3.5 h-3.5 ml-1" />
+                  </a>
                 </div>
               </li>
 
               <% }) %>
               <!-- end inner for each -->
-              <% }) %>
-              <!-- end outer for each -->
             </ul>
+            <% }) %>
+            <!-- end outer for each -->
           </div>
         </div>
       </div>
