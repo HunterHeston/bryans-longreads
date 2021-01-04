@@ -1,7 +1,11 @@
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const fetch = require("node-fetch");
+const { PrismaClient } = require("@prisma/client");
 
+const prisma = new PrismaClient();
+
+// get html text of a url
 async function get_html(url) {
   const res = await fetch(url).catch(console.error);
   return await res.text();
@@ -42,7 +46,7 @@ async function get_long_reads(url) {
   const long_reads = [];
   for (const link of long_reads_element.children) {
     long_reads.push({
-      text: link.textContent,
+      description: link.textContent,
       link: link.children[0].href,
     });
   }
@@ -113,6 +117,19 @@ async function scrape_long_reads() {
   const date = await get_date_of_podcast(long_read_url);
 
   console.log(date, long_reads);
+
+  await prisma.longreadList
+    .create({
+      data: {
+        date: date,
+        links: {
+          create: long_reads,
+        },
+      },
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }
 
 // run the script

@@ -8,7 +8,8 @@
     "predebug": "npm run tailwind:css",
     "debug": "DEBUG=myapp:* nodemon node ./bin/www",
     "tailwind:css": "npx postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css",
-    "migrate": "npx prisma migrate dev --preview-feature"
+    "migrate": "npx prisma migrate dev --preview-feature",
+    "scrape": "node ./scripts/scrape_long_reads.js"
   },
   "dependencies": {
     "@prisma/client": "^2.13.1",
@@ -18,7 +19,9 @@
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
+    "jsdom": "^16.4.0",
     "morgan": "~1.9.1",
+    "node-fetch": "^2.6.1",
     "postcss": "^8.2.2",
     "postcss-cli": "^8.3.1",
     "tailwindcss": "^2.0.2"

@@ -10,7 +10,7 @@ generator client {
 model LongreadList {
   id    Int        @id @default(autoincrement())
   links Longread[]
-  date  DateTime
+  date  String     @unique
 }
 
 model Longread {
