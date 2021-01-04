@@ -3,15 +3,22 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "prestart": "npm run tailwind:css",
     "start": "node ./bin/www",
-    "debug": "DEBUG=myapp:* npm start"
+    "predebug": "npm run tailwind:css",
+    "debug": "DEBUG=myapp:* nodemon node ./bin/www",
+    "tailwind:css": "npx postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css"
   },
   "dependencies": {
+    "autoprefixer": "^10.1.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "postcss": "^8.2.2",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.0.2"
   }
 }
