@@ -1,0 +1,22 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./database.sqlite"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model LongreadList {
+  id    Int        @id @default(autoincrement())
+  links Longread[]
+  date  DateTime
+}
+
+model Longread {
+  id          Int          @id @default(autoincrement())
+  link        String
+  description String
+  list        LongreadList @relation(fields: [longreadID], references: [id])
+  longreadID  Int
+}

@@ -7,9 +7,11 @@
     "start": "node ./bin/www",
     "predebug": "npm run tailwind:css",
     "debug": "DEBUG=myapp:* nodemon node ./bin/www",
-    "tailwind:css": "npx postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css"
+    "tailwind:css": "npx postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css",
+    "migrate": "npx prisma migrate dev --preview-feature"
   },
   "dependencies": {
+    "@prisma/client": "^2.13.1",
     "autoprefixer": "^10.1.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
@@ -20,5 +22,8 @@
     "postcss": "^8.2.2",
     "postcss-cli": "^8.3.1",
     "tailwindcss": "^2.0.2"
+  },
+  "devDependencies": {
+    "@prisma/cli": "^2.13.1"
   }
 }
